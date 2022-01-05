@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="asset-menu">
+    <ol class='options-list'>
+        <li><div class="add-asset"><a class="add-asset" href="{{ url_for('add_asset') }}">Add new asset</a></div></li>
+        <li><div class="remove-asset m"><a class="remove-asset" href="">Delete asset</a></div></li>
+    </ol>
+</div>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+            <div class="main-form">
+                <h4>Please add new asset here</h4>
+               <div class="name-label">
+                    <p>
+                        {{ form.name.label }}
+                        {{ form.name(size=32) }}
+                        {% for error in form.name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                </div>
+                <div class="type-label">
+                    <p>
+                        {{ form.type.label }}
+                        {{ form.type(size=1) }}
+                        {% for error in form.type.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                </div>
+                <div class="name-label">
+                    <p>
+                        {{ form.serial_number.label }}
+                        {{ form.serial_number(size=32) }}
+                        {% for error in form.serial_number.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    </div>
+                    <div class="name-label">
+                        <p>
+                            {{ form.owner.label }}
+                            {{ form.owner(size=32) }}
+                            {% for error in form.owner.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="name-label">
+                    <p>
+                        {{ form.purchased.label }}
+                        {{ form.purchased(size=32) }}
+                        {% for error in form.purchased.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    </div> 
+                    <div class="name-submit">
+                        <p>
+                            {{ form.submit() }}
+                        </p>
+                    </div> 
+                </div>   
+        </form>        
+{% endblock %}

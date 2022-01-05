@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='show-assets'>
+    <div class="asset-menu">
+        <ol class='options-list'>
+            <li><div class="add-asset"><a class="add-asset" href="{{ url_for('add_asset') }}">Add new asset</a></div></li>
+        </ol>
+    </div>
+        <div class="column-name">
+            <h3>Nr.</h3>
+        </div>
+        <div class="column-name">
+            <h3>Name</h3>
+        </div>
+        <div class="column-name">
+            <h3>Type</h3>
+        </div>
+        <div class="column-name">
+            <h3>Serialnumber</h3>
+        </div>
+        <div class="column-name">
+            <h3>Purchased</h3>
+        </div>
+        <div class="column-name">
+            <h3>User</h3>
+        </div>
+        {% for asset in assets %}
+            <div class="column-name">
+                <p class='asset-name'>{{ asset.id }}</p>
+            </div>
+            <div class="column-type">
+                <a href="{{ url_for('asset',asset_id=asset.id)}}"><p class='asset-type'></p>{{ asset.name }}</p></a>
+            </div>
+            <div class="column-type"><p>{{ asset.type }}</p> 
+            </div>
+            <div class="column-type"><p>{{ asset.serial_number }}</p>
+            </div>
+            <div class="column-type"><p>{{ asset.purchased }}</p>
+            </div>
+            <div class="column-type"><p>{{ asset.owner }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="asset-menu">
+    <ol class='options-list'>
+        <li><div class="add-asset"><a class="add-asset" href="{{ url_for('add_asset') }}">Add new asset</a></div></li>
+        <li><div class="remove-asset m"><a class="remove-asset" href="{{ url_for('delete',asset_id=asset.id)}}">Delete asset</a></div></li>
+    </ol>
+</div>
+    <div class="main-form">
+        <div class="name-label">
+            <p>
+               Name:  {{asset.name}}
+            </p>
+        </div>
+        <div class="type-label">
+            <p>
+                Type: {{ asset.type }}
+            </p>
+        </div>
+        <div class="serial-label">
+            <p>
+                Serialnumber: {{ asset.serial_number}}
+            </p>
+            </div>
+            <div class="purchased-label">
+                <p>
+                    Purchased: {{ asset.purchased }}
+                </p>
+            </div>
+            <div class="owner-label">
+            <p>
+                User: {{ asset.owner }}
+            </p>
+            </div> 
+    </div>
+
+{% endblock %}

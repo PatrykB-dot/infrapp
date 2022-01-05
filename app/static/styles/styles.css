@@ -1,0 +1,83 @@
+::after,
+::before
+body {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+* {
+    font-family: "Quantico";
+}
+a {
+    text-decoration:none;
+    color:black;
+}
+.logo {
+    height: 100px;
+    width: 1920px;
+}
+img {
+    width: 100%;
+    max-height: 100%;
+}
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+.navbar {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width:50%;
+    outline: none;
+    background-color: rgb(228, 226, 226);
+}
+div {
+    text-align: center;
+}
+.asset-table {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width:80vw;
+    text-align: left;
+}
+.description {
+    border-bottom-style:solid;
+}
+.show-assets {
+    width:80vw;
+    margin-top:30px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.asset-menu {
+    width: 7vw;
+    position: absolute;
+    left: 0px;
+    height: auto;
+    margin-top:30px;
+    border-right: ridge;
+    padding-right:5px;
+}
+.options-list {
+    list-style-type:inherit;
+}
+.add-asset:hover {
+    color: rgb(2, 59, 2);
+}
+.main-form {
+    display:flex;
+    flex-direction: column;
+    align-items: baseline;
+    width:80vw;
+    margin-top:30px;
+    border-top-style:ridge;
+}
+.m {
+    margin-top: 5px;
+}
