@@ -2,7 +2,7 @@ from app import app, db
 from flask import render_template,url_for,redirect,request
 from app.models import Asset
 from app.forms import AddAssetForm
-
+from flask_login import current_user, login_user
 
 @app.route('/')
 @app.route('/index')
@@ -54,3 +54,8 @@ def delete(asset_id):
     db.session.delete(asset)
     db.session.commit()
     return redirect(url_for('assets'))
+
+@app.route('/login', methods=['GET', POST])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
