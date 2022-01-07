@@ -2,7 +2,7 @@ from app import app, db
 from flask import render_template,url_for,redirect,request,flash
 from app.models import Asset, User
 from app.forms import AddAssetForm, LoginForm
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user, login_required
 
 @app.route('/')
 @app.route('/index')
@@ -12,6 +12,7 @@ def index():
     return render_template('index.html', title='Infrapp', text=text)
 
 @app.route('/assets')
+@login_required
 def assets():
     # Pobranie assetów z bazy danych
     # Przypisanie ich do zmiennej assets
@@ -37,12 +38,14 @@ def add_asset():
     return render_template('add_asset.html',title = 'Add asset', form=form)
 
 @app.route('/asset/<int:asset_id>')
+@login_required
 def asset(asset_id):
     # Wyszukanie konkretnego assetu oraz wyrenderowanie go na stronie asset.html
     asset = Asset.query.filter_by(id=asset_id).first_or_404()
     return render_template('asset.html',asset=asset)
 
 @app.route('/delete/<int:asset_id>')
+@login_required
 def delete(asset_id):
     """
     Usuwanie assetu z bazy danych :
@@ -68,3 +71,9 @@ def login():
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))

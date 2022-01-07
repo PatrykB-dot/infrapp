@@ -11,5 +11,6 @@ migrate = Migrate(app, db)
 if __name__ == "__main__":
     app.run(debug=True)
 login = LoginManager(app)
+login.login_view = 'login'
 
 from app import routes,models
